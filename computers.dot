@@ -1,0 +1,25 @@
+graph G{
+    node [shape="record"];
+
+    subgraph cluster_laptop {
+        label="Laptops";
+
+        myon[label="myon.local|{ Macbook Pro 13\"| Newest slowest release}|Old college laptop"];
+        kirasame[label="kirasame.local |{ XPS 13 Dev Laptop | Running Fedora 27 }|Personal laptop"];
+        youmu[label="youmu.local |{ KVM Dev VM | OpenBSD }| Personal/OpenBSD\ndevelopment"];
+
+        kirasame -- youmu; ## Declare VM on kirasame
+    }
+
+    subgraph cluster_servers {
+        label="Physical Servers";
+        shangia[label="shangia.ehouse.io |{ Thinkpad X230 | OpenBSD}|Old gateway and\nweb server"];
+    }
+
+    subgraph cluster_cloud {
+        label="Cloud";
+
+        marisa[label="marisa.ehouse.io |{ Hosted by Chicago VPS | Running Centos 7}| Minecraft,\nNginx, Git,\nPersonal blog"];
+    }
+
+}
