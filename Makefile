@@ -1,5 +1,5 @@
-ALL_PNG:=$(patsubst %.dot, %.png, $(wildcard *.dot))
-ALL_PDF:=$(patsubst %.dot, %.pdf, $(wildcard *.dot))
+ALL_PNG:=$(patsubst src/%.dot, dst/%.png, $(wildcard src/*.dot))
+ALL_PDF:=$(patsubst src/%.dot, dst/%.pdf, $(wildcard src/*.dot))
 
 all: png
 
@@ -11,11 +11,11 @@ pdf: $(ALL_PDF)
 
 .PHONE: pdf
 
-%.png: %.dot
+dst/%.png: src/%.dot
 	dot -Tpng $< -o $@
 
-%.pdf: %.dot
+dst/%.pdf: src/%.dot
 	dot -Tpdf $< -o $@
 
 clean:
-	rm -f $(wildcard *.pdf) $(wildcard *.png)
+	rm -f $(wildcard dst/*.pdf) $(wildcard dst/*.png)
